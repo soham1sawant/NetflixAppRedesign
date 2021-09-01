@@ -25,9 +25,8 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Stack(
               children: [
@@ -65,8 +64,49 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
+            SizedBox(
+              height: 40.0,
+            ),
             Row(
-              children: [],
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(15.0),
+                  child: Container(
+                    width: 190.0,
+                    height: 50.0,
+                    color: Colors.red,
+                    child: Center(
+                      child: Text(
+                        "DISCOVER",
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(15.0),
+                  child: Container(
+                    width: 190.0,
+                    height: 50.0,
+                    color: Colors.red,
+                    child: Center(
+                      child: Text(
+                        "CATEGORIES",
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             )
           ],
         ),
