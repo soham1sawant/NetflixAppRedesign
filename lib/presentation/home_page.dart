@@ -64,9 +64,7 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
-              height: 40.0,
-            ),
+            SizedBox(height: 40.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -107,7 +105,8 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ],
-            )
+            ),
+            SizedBox(height: 40.0),
           ],
         ),
       ),
