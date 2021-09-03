@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix_app_redesign/logic/bloc/trending_movies/trendingmovies_bloc.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -28,41 +30,10 @@ class HomePage extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         child: Column(
           children: [
-            Stack(
-              children: [
-                Center(
-                  child: Container(
-                    width: 380.0,
-                    height: 190.0,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(15.0),
-                      child: FittedBox(
-                        child: Image(
-                            image: AssetImage("assets/theNutcracker.jpg")),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    padding: const EdgeInsets.all(10.0),
-                    width: 380.0,
-                    height: 190.0,
-                    child: Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Text(
-                        "THE NUTCRACKER AND THE FOUR REALMS",
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+            BlocBuilder<TrendingmoviesBloc, TrendingmoviesState>(
+              builder: (context, state) {
+                return TopMovies();
+              },
             ),
             SizedBox(height: 40.0),
             Row(
@@ -110,6 +81,52 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class TopMovies extends StatelessWidget {
+  final image;
+  final title;
+
+  const TopMovies({Key? key, this.image, this.title}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Center(
+          child: Container(
+            width: 380.0,
+            height: 190.0,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(15.0),
+              child: FittedBox(
+                child: Image(image: AssetImage("assets/theNutcracker.jpg")),
+                fit: BoxFit.fill,
+              ),
+            ),
+          ),
+        ),
+        Center(
+          child: Container(
+            padding: const EdgeInsets.all(10.0),
+            width: 380.0,
+            height: 190.0,
+            child: Align(
+              alignment: Alignment.bottomLeft,
+              child: Text(
+                "THE NUTCRACKER AND THE FOUR REALMS",
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
